@@ -15,7 +15,7 @@
                     <ul class="nav navbar-nav">
                         <li><router-link to="/">首页</router-link></li>
                         <li><router-link to="/ticket">电影票</router-link></li>
-                        <li><a href="/center">个人中心</a></li>
+                        <li><router-link to="/center"></router-link></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

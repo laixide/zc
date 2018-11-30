@@ -33,7 +33,7 @@
 
                         <li >
                             MVC数量:{{ moveInfo.mvc }}
-                        </li>:
+                        </li>
 
                         <li >
                             KCC余额:{{ moveInfo.kcc }}
@@ -97,9 +97,7 @@ import Web3 from 'web3'
                 return this.$store.state.web3.coinbase
             }
         },
-        created () {
 
-        },
         watch: {
             //监听MetaMask账户变化，切换用户重新获取众筹信息
             currentAccount: function (val) {
@@ -123,6 +121,7 @@ import Web3 from 'web3'
                     .then(result => {
                         this.moveInfo.mvc = result.amount;
                         this.moveInfo.time = this.formatDate(result.crowdTime);
+
                         this.crowdContract.methods.totalSupply()
                             .call()
                             .then(r => {
@@ -152,11 +151,11 @@ import Web3 from 'web3'
                         this.ethAmount = null;
                     })
                     .on('receipt',receipt => {
-                        console.log("receipt",receipt);
+
                         this.getInfo()
                     })
                     .on('confirmation', (confirmation, receipt) => {
-                        console.log("confirmation",confirmation, receipt);
+
                     })
                     .on('error', error => {
                         console.log(error);
@@ -173,7 +172,6 @@ import Web3 from 'web3'
                        this.voteValue = null;
                    })
                    .on('receipt', receipt => {
-                       console.log(receipt);
                        this.getInfo();
                    })
                    .on('error', error => {

@@ -102,7 +102,7 @@ contract KccToken is IERC20 {
         return true;
 
     }
-
+    //购买kccToken 价格: 1 ether = 1000 kcc
     function buyKcc() external payable returns(bool) {
         require(msg.value >= 0,"Eth must be equal or greater than 0");
         uint value = msg.value.div(number.div(price));
@@ -110,7 +110,7 @@ contract KccToken is IERC20 {
         _drop(msg.sender, value);
         emit BuyToken(msg.sender, msg.value, value);
     }
-    
+    //给管理员发送token
     function transferToOwner(address from, uint value) public returns(bool) {
         _transfer(from, manager, value);
         return true;
@@ -119,4 +119,5 @@ contract KccToken is IERC20 {
     function setPrice(uint value) external {
         price = value;
     }
+
 }

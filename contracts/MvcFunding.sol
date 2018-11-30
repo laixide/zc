@@ -8,15 +8,11 @@ contract MvcFunding {
     MoveCrowd mc;
 
     address public owner;
-    uint public kccUint;
-    uint public mvcUint;
 
-    constructor (uint _kccUint, uint _mvcUint) public {
+    constructor (uint endTime) public {
         owner = msg.sender;
         kcc = new KccToken(200000,msg.sender);
-        mc = new MoveCrowd(10000,"TaiTan",msg.sender, kcc);
-        kccUint = _kccUint;
-        mvcUint = _mvcUint;
+        mc = new MoveCrowd(10000,"TaiTan",msg.sender, kcc, endTime);
 
     }
 
