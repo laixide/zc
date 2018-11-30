@@ -126,11 +126,39 @@ export const crowdAbi = [
     {
         "constant": true,
         "inputs": [],
+        "name": "endTime",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
         "name": "desc",
         "outputs": [
             {
                 "name": "",
                 "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "startTime",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
             }
         ],
         "payable": false,
@@ -168,6 +196,20 @@ export const crowdAbi = [
     {
         "constant": true,
         "inputs": [],
+        "name": "mvcPrice",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
         "name": "totalCrowd",
         "outputs": [
             {
@@ -196,6 +238,10 @@ export const crowdAbi = [
             {
                 "name": "_token",
                 "type": "address"
+            },
+            {
+                "name": "_endTime",
+                "type": "uint256"
             }
         ],
         "payable": false,
@@ -299,6 +345,25 @@ export const crowdAbi = [
         "type": "function"
     },
     {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "value",
+                "type": "uint256"
+            }
+        ],
+        "name": "setMvcPrice",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "constant": true,
         "inputs": [],
         "name": "getBalance",
@@ -306,20 +371,6 @@ export const crowdAbi = [
             {
                 "name": "",
                 "type": "uint256"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "getAddr",
-        "outputs": [
-            {
-                "name": "",
-                "type": "address"
             }
         ],
         "payable": false,

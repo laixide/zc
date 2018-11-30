@@ -4,7 +4,7 @@
 
             <div class="projects-header page-header">
                 <h2>优质众筹项目</h2>
-                <p>基于以太坊的dapp，去中心化，安全。</p>
+                <p>基于以太坊的dapp，去中心化，售票自动分账。</p>
             </div>
 
             <div class="row">
@@ -12,9 +12,9 @@
                 <div class=" col-md-7" >
                     <img src="../images/1.png" width="600" height="400" />
                     <div class='btn-margin'>
-                        <input type="text" class="getWei form-control weiclass" v-model="ethAmount"  >
+                        <input type="text" class="getWei form-control weiclass" placeholder="请输入以太币" v-model="ethAmount"  >
                         <button type="button" class="btn btn-danger" @click="recharge" >充值</button>
-                        <input type="text" class="form-control weiclass" v-model="voteValue">
+                        <input type="text" class="form-control weiclass" placeholder="请输入kcc*100" v-model="voteValue">
                         <button type="button" class="btn btn-primary" @click="vote">投票支持</button>
                         <button type="button" class="btn btn-primary" @click="getInfo">刷新数据</button>
                     </div>
@@ -42,6 +42,9 @@
                         <li >
                             投票时间:{{ moveInfo.time }}
                         </li>
+                        <li >
+                            截止日期:{{ moveInfo.endDate }}
+                        </li>
                     </ul>
                 </div>
 
@@ -66,7 +69,8 @@ import Web3 from 'web3'
                     proportion: "",
                     mvc: null,
                     kcc: null,
-                    time: null
+                    time: null,
+                    endDate: null
 
                 },
                 ethAmount: null,
@@ -116,6 +120,13 @@ import Web3 from 'web3'
                     .then(result => {
                        this.moveInfo.name = result
                     });
+
+                this.crowdContract.methods.endTime()
+                    .call()
+                    .then(result => {
+                        this.moveInfo.endDate = this.formatDate(result);
+                    })
+
                 this.crowdContract.methods.crowdInfo(this.currentAccount)
                     .call()
                     .then(result => {
@@ -136,6 +147,7 @@ import Web3 from 'web3'
                         //console.log("kcc",result)
                         this.moveInfo.kcc = result;
                     })
+
 
             },
             recharge() {
@@ -212,7 +224,7 @@ import Web3 from 'web3'
         margin-top: 20px;
     }
     .weiclass{
-        width: 80px;
+        width: 150px;
         display: inline-block;
     }
 
